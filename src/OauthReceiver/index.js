@@ -2,6 +2,8 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import qs from 'qs';
+import base64 from 'base-64'
+
 import { buildURL, fetch2 } from '../utils';
 import pkg from '../../package.json';
 
@@ -84,6 +86,7 @@ export class OauthReceiver extends React.Component {
 
       const headers = new Headers({
         'User-Agent': appName,
+        'Authorization': 'Basic ' + base64.encode(clientId+':'+clientSecret),
         Accept: 'application/json',
       });
 
