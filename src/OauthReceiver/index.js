@@ -87,9 +87,11 @@ export class OauthReceiver extends React.Component {
       const headers = new Headers({
         'User-Agent': appName,
         'Authorization': 'Basic ' + base64.encode(clientId+':'+clientSecret),
+        'Content-Type': 'application/x-www-form-urlencoded',
         Accept: 'application/json',
       });
 
+      console.log(url, headers)
       fetch2(url, { method: 'POST', headers })
         .then(response => {
           const accessToken = response.access_token;
