@@ -91,7 +91,6 @@ export class OauthReceiver extends React.Component {
         Accept: 'application/json',
       });
 
-      console.log(url, headers)
       fetch2(url, { method: 'POST', headers })
         .then(response => {
           const accessToken = response.access_token;
