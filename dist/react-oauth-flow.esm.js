@@ -807,8 +807,8 @@ function fetch2(url, opts) {
     if (!response.ok) throw response;
     return response.json();
   }).catch(function (err) {
-    if (!err) {
-      throw 'undefined err';
+    if (!err.json) {
+      throw err;
     }
     err.json().then(function (errJSON) {
       var error = new Error(err.statusText);
