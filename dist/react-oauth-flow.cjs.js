@@ -813,7 +813,10 @@ function fetch2(url, opts) {
     if (!response.ok) throw response;
     return response.json();
   }).catch(function (err) {
-    return err.json().then(function (errJSON) {
+    if (!err) {
+      throw 'undefined err';
+    }
+    err.json().then(function (errJSON) {
       var error = new Error(err.statusText);
       defineStaticProp(error, 'response', err);
       defineStaticProp(error.response, 'data', errJSON);
