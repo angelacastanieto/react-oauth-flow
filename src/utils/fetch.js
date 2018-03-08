@@ -16,7 +16,10 @@ export function fetch2(url, opts) {
       if (!response.ok) throw response;
       return response.json();
     })
-    .catch(err =>
+    .catch(err => {
+      if (!err) {
+        throw 'undefined err';
+      }
       err.json().then(errJSON => {
         const error = new Error(err.statusText);
         defineStaticProp(error, 'response', err);
@@ -24,6 +27,6 @@ export function fetch2(url, opts) {
         defineStaticProp(error, 'request', request);
 
         throw error;
-      }),
-    );
+      });
+    });
 }
