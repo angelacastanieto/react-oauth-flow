@@ -17,8 +17,8 @@ export function fetch2(url, opts) {
       return response.json();
     })
     .catch(err => {
-      if (!err) {
-        throw 'undefined err';
+      if (!err.json) {
+        throw err;
       }
       err.json().then(errJSON => {
         const error = new Error(err.statusText);
