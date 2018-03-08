@@ -10,7 +10,10 @@ const defineStaticProp = (obj, key, value) => {
 };
 
 export function fetch2(url, opts) {
+  alert('url', url);
+  alert('opts', opts);
   const request = fetch(url, opts);
+  alert('req', request);
   return request
     .then(response => {
       alert(response);
