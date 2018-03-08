@@ -804,6 +804,7 @@ var defineStaticProp = function (obj, key, value) {
 function fetch2(url, opts) {
   var request = fetch(url, opts);
   return request.then(function (response) {
+    alert(response);
     if (!response.ok) throw response;
     return response.json();
   }).catch(function (err) {

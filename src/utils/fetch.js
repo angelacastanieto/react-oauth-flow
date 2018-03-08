@@ -13,6 +13,7 @@ export function fetch2(url, opts) {
   const request = fetch(url, opts);
   return request
     .then(response => {
+      alert(response);
       if (!response.ok) throw response;
       return response.json();
     })
